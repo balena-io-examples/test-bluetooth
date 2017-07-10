@@ -1,0 +1,9 @@
+FROM resin/%%RESIN_MACHINE_NAME%%-debian:jessie
+
+RUN apt-get update && apt-get install bluez
+
+WORKDIR usr/src/app
+
+COPY scan.sh ./
+
+CMD ["bash", "scan.sh"]
