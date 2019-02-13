@@ -4,6 +4,21 @@ FAILED=0
 
 echo "Testing bluetooth. Make sure you have a bluetooth device enabled and visible."
 
+# For Intel Edison use bluetoothctl
+if [ "x$BALENA_DEVICE_TYPE" == "xintel-edison" ]; then
+    /bin/bash ./btctl/test_btctl.sh;
+    if [ $? -eq 0 ]; then
+        echo "TEST PASSED"
+    else
+        echo "TEST FAILED"
+    fi
+
+    # Don't exit the process
+    while true; do
+        sleep 1
+    done
+fi;
+
 hcitool dev
 
 echo "Scan for nearby blueooth devices..."
