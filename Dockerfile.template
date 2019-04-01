@@ -1,6 +1,6 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-debian:jessie
+FROM balenalib/%%RESIN_MACHINE_NAME%%-debian
 
-RUN apt-get update && apt-get install bluez
+RUN install_packages bluez
 
 WORKDIR usr/src/app
 
